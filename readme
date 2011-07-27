@@ -1,0 +1,38 @@
+Installation:
+-------------
+
+Compile using apxs. apxs may not be available by default on systems. You might have to install the required package containing apxs. Generally it comes with the apache devel package. For instance in ubuntu you could install apache2-prefork-dev.
+
+Something like the following command should work for the compilation.
+
+sudo apxs2 -i -a -c <path to mod_dosblock_module.c>
+
+You might have to reload/restart your apache after this
+
+Configuration:
+---------------
+
+You can define a url based subrule using the following syntax
+ DosBlockUrl  <name of the  url subrule> < regexp pattern>
+Example
+ DosBlockUrl myurlrule /test
+Header based subrule can be defined as follows
+ DosBlockHeader <name of the header subrule> <header name>  <regexp pattern>
+Example:
+ DosBlockHeader myheaderrule User-Agent mozilla
+Then you use the following syntax to do the real blocking
+ DosBlockRule <dos rule name>:<name of the subrule> <threshold rate (hits per sec)> <time till blockage ( in secs)>
+
+Example:
+ DosBlockRule dosblock_header:myheaderrule 2 60
+
+A complete example:
+-------------------
+ DosBlockUrl myurlrule /test
+ DosBlockRule blocktest:myurlrule 50 120
+
+
+In case you want to enable debugging you can set
+ DosBlockVerbose On
+Verbose logging is off by default
+
