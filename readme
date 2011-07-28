@@ -1,7 +1,7 @@
 Installation:
 -------------
 
-Compile using apxs. apxs may not be available by default on systems. You might have to install the required package containing apxs. Generally it comes with the apache devel package. For instance in ubuntu you could install apache2-prefork-dev.
+Compile using apxs. apxs may not be available by default on systems. You might have to install the required package containing apxs. Generally it comes with the apache devel package. For instance in ubuntu you could install apache2-prefork-dev. You will also need libapr and libapr-dev.
 
 Something like the following command should work for the compilation.
 
@@ -11,6 +11,7 @@ You might have to reload/restart your apache after this
 
 Configuration:
 ---------------
+Currently we support the following directives DosBlockUrl, DosBlockHeader, DosBlockRule, DosBlockVerbose
 
 You can define a url based subrule using the following syntax
  DosBlockUrl  <name of the  url subrule> < regexp pattern>
