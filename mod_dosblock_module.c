@@ -652,7 +652,7 @@ static int dosblock_main(request_rec *r) {
        * this stage
        */
       if (blocked)
-        return HTTP_FORBIDDEN;
+        return HTTP_SERVICE_UNAVAILABLE;
    }
     else {
       /* apr_table_set(r->headers_out, "DOSRULE_MATCHED", "None");*/
